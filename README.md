@@ -45,3 +45,7 @@ Your usage will now be:
 ```
 <script>var dga = new DGAcquisition(90,db_data); dga.pushToDataLayer("acquisition_data");</script>
 ```
+
+## gtm_setup_import.json
+You can use this file to add the variables, triggers and GA Events. This is intended to help GTM professionals get set up, so if you're not a GTM professional I'd suggest not touching this. We don't take responsibility for you breaking things, yada yada.
+![GTM Instructions](http://prntscr.com/p7wph9)
