@@ -13,13 +13,13 @@ We've also added advanced functionality to store a third layer of attribution lo
 DGA allows us to upload values from the database to reflect that middle touch, instead of saying that that second purchase had a first touch of Facebook Ads and a last touch of Google Ads, we could also add value to the point which caused him to first become a customer.
 
 ## Usage
-Upload sourcebuster.min.js (from here: http://sbjs.rocks/#/) and dgacquisition.min.js to a resources folder and load them in the <head> of the site.
+Upload sourcebuster.min.js (from here: http://sbjs.rocks/#/) and dgacquisition.min.js to a resources folder and load them in the head of the site.
 ```
 <script src="/scripts/sourcebuster.min.js"></script>
 <script src="/scripts/dgacquisition.min.js"></script>
 ```
 
-Before the closing <body> tag, add the following code:
+Before the closing body tag, add the following code:
 ```
 <script>var dga = new DGAcquisition(90,[]); dga.pushToDataLayer("acquisition_data");</script>
 ```
