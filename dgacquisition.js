@@ -8,14 +8,14 @@ class DGAcquisition {
 			lifetime: life_time,
 		});
 
-		this.gclid = this.getGclid();
+		var gclid = this.getGclid();
 
 		this.firsttouch = {
 			'source': sbjs.get.first.src,
 			'medium': sbjs.get.first.mdm,
 			'campaign': sbjs.get.first.cmp,
 			'content': sbjs.get.first.cnt,
-			'term': sbjs.get.first.term,
+			'term': sbjs.get.first.trm,
 			'referrer': sbjs.get.first_add.rf,
 			'landing_page': sbjs.get.first_add.ep,
 			'gclid': gclid.first
@@ -26,7 +26,7 @@ class DGAcquisition {
 			'medium': sbjs.get.current.mdm,
 			'campaign': sbjs.get.current.cmp,
 			'content': sbjs.get.current.cnt,
-			'term': sbjs.get.current.term,
+			'term': sbjs.get.current.trm,
 			'referrer': sbjs.get.current_add.rf,
 			'landing_page': sbjs.get.current_add.ep,
 			'gclid': gclid.current
@@ -66,7 +66,8 @@ class DGAcquisition {
 		overwrite it if the query parameter is empty.
 	*/
 		var	d = new Date();
-		d.setTime(d.getTime() + 1*60*60*1000);
+		// d.setTime(d.getTime() + 1*60*60*1000);
+		d.setTime(d.getTime() + 1*60*1000); // 1 minute TESTING
 		var hour_away = d.getTime();
 		d = new Date();
 		var	now = d.getTime();
@@ -80,10 +81,10 @@ class DGAcquisition {
 			var current = this.getUrlParameter("gclid");
 		}
 
-		if (this.getCookie("dga_gclid") != "undefined") {
-			var gclid_cookie = this.getCookie("dga_gclid");
+		var gclid_cookie = this.getCookie("dga_gclid");
+		if (typeof gclid_cookie != "undefined") {
 			var [cookie_current, first, expiry] = gclid_cookie.split("|||");
-			if (expiry > now) {
+			if (expiry < now) {
 				first = cookie_current;
 				expiry = hour_away;
 			}
@@ -133,5 +134,3 @@ class DGAcquisition {
 		}
 		dataLayer.push(data_array);
 	}
-}
-// let dga = DGAcquisition(6,[]); dga.pushToDataLayer("acquisition_data");
