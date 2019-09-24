@@ -1,6 +1,6 @@
 {
     "exportFormatVersion": 2,
-    "exportTime": "2019-09-18 18:57:48",
+    "exportTime": "2019-09-24 20:22:28",
     "containerVersion": {
         "path": "accounts/1611841940/containers/12958678/versions/0",
         "accountId": "1611841940",
@@ -15,15 +15,15 @@
             "usageContext": [
                 "WEB"
             ],
-            "fingerprint": "1568833041209",
+            "fingerprint": "1569356536377",
             "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1611841940/containers/12958678/workspaces?apiLink=container"
         },
         "tag": [
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "tagId": "1",
-                "name": "UA - Attribution Tracking",
+                "tagId": "2",
+                "name": "UA - Set Acquisition Data Event - DGA",
                 "type": "ua",
                 "parameter": [
                     {
@@ -39,7 +39,7 @@
                     {
                         "type": "TEMPLATE",
                         "key": "eventCategory",
-                        "value": "Attribution Tracking"
+                        "value": "DG Acquisition"
                     },
                     {
                         "type": "TEMPLATE",
@@ -48,8 +48,18 @@
                     },
                     {
                         "type": "TEMPLATE",
+                        "key": "gaSettings",
+                        "value": "{{UA - Settings Variable - DGA - DELETEME}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
                         "key": "eventAction",
-                        "value": "See Custom Dimensions"
+                        "value": "{{dgacquisition.firsttouch.source}} / {{dgacquisition.firsttouch.medium}}"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventLabel",
+                        "value": "{{dgacquisition.current.source}} / {{dgacquisition.current.medium}}"
                     },
                     {
                         "type": "LIST",
@@ -61,12 +71,12 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "index",
-                                        "value": "1"
+                                        "value": "5"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "dimension",
-                                        "value": "{{attr_firsttouch_source}} / {{attr_firsttouch_medium}}"
+                                        "value": "{{dgacquisition.firsttouch.source}} / {{dgacquisition.firsttouch.medium}}"
                                     }
                                 ]
                             },
@@ -76,12 +86,12 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "index",
-                                        "value": "2"
+                                        "value": "6"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "dimension",
-                                        "value": "{{attr_firsttouch_landing_page}}"
+                                        "value": "{{dgacquisition.firsttouch.landing_page}}"
                                     }
                                 ]
                             },
@@ -91,12 +101,12 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "index",
-                                        "value": "3"
+                                        "value": "7"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "dimension",
-                                        "value": "{{attr_current_source}} / {{attr_current_medium}}"
+                                        "value": "{{dgacquisition.current.source}} / {{dgacquisition.current.medium}}"
                                     }
                                 ]
                             },
@@ -106,27 +116,23 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "index",
-                                        "value": "4"
+                                        "value": "8"
                                     },
                                     {
                                         "type": "TEMPLATE",
                                         "key": "dimension",
-                                        "value": "{{attr_current_landing_page}}"
+                                        "value": "{{dgacquisition.current.landing_page}}"
                                     }
                                 ]
                             }
                         ]
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "trackingId",
-                        "value": "UA-12345-1"
                     }
                 ],
-                "fingerprint": "1568833041209",
+                "fingerprint": "1569356523175",
                 "firingTriggerId": [
-                    "5"
+                    "7"
                 ],
+                "parentFolderId": "11",
                 "tagFiringOption": "ONCE_PER_EVENT",
                 "paused": true,
                 "monitoringMetadata": {
@@ -138,8 +144,8 @@
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "triggerId": "5",
-                "name": "attribution_tracking",
+                "triggerId": "7",
+                "name": "acquisition_data",
                 "type": "CUSTOM_EVENT",
                 "customEventFilter": [
                     {
@@ -153,20 +159,320 @@
                             {
                                 "type": "TEMPLATE",
                                 "key": "arg1",
-                                "value": "attribution_tracking"
+                                "value": "acquisition_data"
                             }
                         ]
                     }
                 ],
-                "fingerprint": "1568833019873"
+                "fingerprint": "1569354023085",
+                "parentFolderId": "11"
             }
         ],
         "variable": [
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "11",
-                "name": "attr_current_campaign",
+                "variableId": "26",
+                "name": "UA - Settings Variable - DGA - DELETEME",
+                "type": "gas",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "cookieDomain",
+                        "value": "auto"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "doubleClick",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setTrackerName",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useDebugVersion",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "useHashAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "decorateFormsAutoLink",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableLinkId",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableEcommerce",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackingId",
+                        "value": "UA-123456-1"
+                    }
+                ],
+                "fingerprint": "1569354023086",
+                "parentFolderId": "11"
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "25",
+                "name": "dgacquisition",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition"
+                    }
+                ],
+                "fingerprint": "1569354023086",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "27",
+                "name": "dgacquisition.current.campaign",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.campaign"
+                    }
+                ],
+                "fingerprint": "1569354023086",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "28",
+                "name": "dgacquisition.current.content",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.content"
+                    }
+                ],
+                "fingerprint": "1569354023087",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "29",
+                "name": "dgacquisition.current.gclid",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.gclid"
+                    }
+                ],
+                "fingerprint": "1569354023087",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "30",
+                "name": "dgacquisition.current.landing_page",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.landing_page"
+                    }
+                ],
+                "fingerprint": "1569354023087",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "31",
+                "name": "dgacquisition.current.medium",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.medium"
+                    }
+                ],
+                "fingerprint": "1569354023087",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "32",
+                "name": "dgacquisition.current.referrer",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.referrer"
+                    }
+                ],
+                "fingerprint": "1569354023088",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "33",
+                "name": "dgacquisition.current.source",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.source"
+                    }
+                ],
+                "fingerprint": "1569354023088",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "34",
+                "name": "dgacquisition.current.term",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "dgacquisition.current.term"
+                    }
+                ],
+                "fingerprint": "1569354023088",
+                "parentFolderId": "11",
+                "formatValue": {}
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "variableId": "35",
+                "name": "dgacquisition.db_data.campaign",
                 "type": "v",
                 "parameter": [
                     {
@@ -187,17 +493,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_campaign"
+                        "value": "dgacquisition.db_data.campaign"
                     }
                 ],
-                "fingerprint": "1568832565769",
+                "fingerprint": "1569354023088",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "12",
-                "name": "attr_current_content",
+                "variableId": "36",
+                "name": "dgacquisition.db_data.content",
                 "type": "v",
                 "parameter": [
                     {
@@ -218,17 +525,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_content"
+                        "value": "dgacquisition.db_data.content"
                     }
                 ],
-                "fingerprint": "1568832578336",
+                "fingerprint": "1569354023089",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "16",
-                "name": "attr_current_gclid",
+                "variableId": "37",
+                "name": "dgacquisition.db_data.gclid",
                 "type": "v",
                 "parameter": [
                     {
@@ -249,17 +557,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_gclid"
+                        "value": "dgacquisition.db_data.gclid"
                     }
                 ],
-                "fingerprint": "1568832635918",
+                "fingerprint": "1569354023089",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "15",
-                "name": "attr_current_landing_page",
+                "variableId": "38",
+                "name": "dgacquisition.db_data.landing_page",
                 "type": "v",
                 "parameter": [
                     {
@@ -280,17 +589,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_landing_page"
+                        "value": "dgacquisition.db_data.landing_page"
                     }
                 ],
-                "fingerprint": "1568832624699",
+                "fingerprint": "1569354023089",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "10",
-                "name": "attr_current_medium",
+                "variableId": "39",
+                "name": "dgacquisition.db_data.medium",
                 "type": "v",
                 "parameter": [
                     {
@@ -311,17 +621,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_medium"
+                        "value": "dgacquisition.db_data.medium"
                     }
                 ],
-                "fingerprint": "1568832548291",
+                "fingerprint": "1569354023089",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "14",
-                "name": "attr_current_referrer",
+                "variableId": "40",
+                "name": "dgacquisition.db_data.referrer",
                 "type": "v",
                 "parameter": [
                     {
@@ -342,17 +653,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_referrer"
+                        "value": "dgacquisition.db_data.referrer"
                     }
                 ],
-                "fingerprint": "1568832609198",
+                "fingerprint": "1569354023090",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "9",
-                "name": "attr_current_source",
+                "variableId": "41",
+                "name": "dgacquisition.db_data.source",
                 "type": "v",
                 "parameter": [
                     {
@@ -373,17 +685,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_source"
+                        "value": "dgacquisition.db_data.source"
                     }
                 ],
-                "fingerprint": "1568832535971",
+                "fingerprint": "1569354023090",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "13",
-                "name": "attr_current_term",
+                "variableId": "42",
+                "name": "dgacquisition.db_data.term",
                 "type": "v",
                 "parameter": [
                     {
@@ -404,17 +717,18 @@
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "current_term"
+                        "value": "dgacquisition.db_data.term"
                     }
                 ],
-                "fingerprint": "1568832589958",
+                "fingerprint": "1569354023090",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "19",
-                "name": "attr_db_data_campaign",
+                "variableId": "43",
+                "name": "dgacquisition.firsttouch.campaign",
                 "type": "v",
                 "parameter": [
                     {
@@ -425,27 +739,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_campaign"
+                        "value": "dgacquisition.firsttouch.campaign"
                     }
                 ],
-                "fingerprint": "1568832675014",
+                "fingerprint": "1569354023090",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "20",
-                "name": "attr_db_data_content",
+                "variableId": "44",
+                "name": "dgacquisition.firsttouch.content",
                 "type": "v",
                 "parameter": [
                     {
@@ -456,27 +766,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_content"
+                        "value": "dgacquisition.firsttouch.content"
                     }
                 ],
-                "fingerprint": "1568832687104",
+                "fingerprint": "1569354023091",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "24",
-                "name": "attr_db_data_gclid",
+                "variableId": "45",
+                "name": "dgacquisition.firsttouch.gclid",
                 "type": "v",
                 "parameter": [
                     {
@@ -487,27 +793,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_gclid"
+                        "value": "dgacquisition.firsttouch.gclid"
                     }
                 ],
-                "fingerprint": "1568832749869",
+                "fingerprint": "1569354023091",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "23",
-                "name": "attr_db_data_landing_page",
+                "variableId": "46",
+                "name": "dgacquisition.firsttouch.landing_page",
                 "type": "v",
                 "parameter": [
                     {
@@ -518,27 +820,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_landing_page"
+                        "value": "dgacquisition.firsttouch.landing_page"
                     }
                 ],
-                "fingerprint": "1568832735291",
+                "fingerprint": "1569354023091",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "18",
-                "name": "attr_db_data_medium",
+                "variableId": "47",
+                "name": "dgacquisition.firsttouch.medium",
                 "type": "v",
                 "parameter": [
                     {
@@ -549,27 +847,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_medium"
+                        "value": "dgacquisition.firsttouch.medium"
                     }
                 ],
-                "fingerprint": "1568832662892",
+                "fingerprint": "1569354023091",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "22",
-                "name": "attr_db_data_referrer",
+                "variableId": "48",
+                "name": "dgacquisition.firsttouch.referrer",
                 "type": "v",
                 "parameter": [
                     {
@@ -580,27 +874,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_referrer"
+                        "value": "dgacquisition.firsttouch.referrer"
                     }
                 ],
-                "fingerprint": "1568832716725",
+                "fingerprint": "1569354023092",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "17",
-                "name": "attr_db_data_source",
+                "variableId": "49",
+                "name": "dgacquisition.firsttouch.source",
                 "type": "v",
                 "parameter": [
                     {
@@ -611,27 +901,23 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(direct)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_source"
+                        "value": "dgacquisition.firsttouch.source"
                     }
                 ],
-                "fingerprint": "1568832650999",
+                "fingerprint": "1569354023092",
+                "parentFolderId": "11",
                 "formatValue": {}
             },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",
-                "variableId": "21",
-                "name": "attr_db_data_term",
+                "variableId": "50",
+                "name": "dgacquisition.firsttouch.term",
                 "type": "v",
                 "parameter": [
                     {
@@ -642,272 +928,53 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
+                        "value": "false"
                     },
                     {
                         "type": "TEMPLATE",
                         "key": "name",
-                        "value": "db_data_term"
+                        "value": "dgacquisition.firsttouch.term"
                     }
                 ],
-                "fingerprint": "1568832699339",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "3",
-                "name": "attr_firsttouch_campaign",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_campaign"
-                    }
-                ],
-                "fingerprint": "1568832443781",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "4",
-                "name": "attr_firsttouch_content",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_content"
-                    }
-                ],
-                "fingerprint": "1568832457525",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "8",
-                "name": "attr_firsttouch_gclid",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_gclid"
-                    }
-                ],
-                "fingerprint": "1568832519423",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "7",
-                "name": "attr_firsttouch_landing_page",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_landing_page"
-                    }
-                ],
-                "fingerprint": "1568832504862",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "2",
-                "name": "attr_firsttouch_medium",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_medium"
-                    }
-                ],
-                "fingerprint": "1568832431241",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "6",
-                "name": "attr_firsttouch_referrer",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_referrer"
-                    }
-                ],
-                "fingerprint": "1568832490605",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "1",
-                "name": "attr_firsttouch_source",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(direct)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_source"
-                    }
-                ],
-                "fingerprint": "1568832362384",
-                "formatValue": {}
-            },
-            {
-                "accountId": "1611841940",
-                "containerId": "12958678",
-                "variableId": "5",
-                "name": "attr_firsttouch_term",
-                "type": "v",
-                "parameter": [
-                    {
-                        "type": "INTEGER",
-                        "key": "dataLayerVersion",
-                        "value": "2"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "key": "setDefaultValue",
-                        "value": "true"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "defaultValue",
-                        "value": "(none)"
-                    },
-                    {
-                        "type": "TEMPLATE",
-                        "key": "name",
-                        "value": "firsttouch_term"
-                    }
-                ],
-                "fingerprint": "1568832473880",
+                "fingerprint": "1569354023092",
+                "parentFolderId": "11",
                 "formatValue": {}
             }
         ],
+        "folder": [
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "folderId": "11",
+                "name": "DG Acquisition",
+                "fingerprint": "1569354022008"
+            }
+        ],
         "builtInVariable": [
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "1611841940",
+                "containerId": "12958678",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
             {
                 "accountId": "1611841940",
                 "containerId": "12958678",

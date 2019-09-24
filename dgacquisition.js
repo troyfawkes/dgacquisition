@@ -17,7 +17,7 @@ class DGAcquisition {
 			'content': sbjs.get.first.cnt,
 			'term': sbjs.get.first.trm,
 			'referrer': sbjs.get.first_add.rf,
-			'landing_page': sbjs.get.first_add.ep,
+			'landing_page': sbjs.get.first_add.ep.split('?')[0], // Stripping query string
 			'gclid': gclid.first
 		}
 
@@ -28,7 +28,7 @@ class DGAcquisition {
 			'content': sbjs.get.current.cnt,
 			'term': sbjs.get.current.trm,
 			'referrer': sbjs.get.current_add.rf,
-			'landing_page': sbjs.get.current_add.ep,
+			'landing_page': sbjs.get.current_add.ep.split('?')[0], // Stripping query string
 			'gclid': gclid.current
 		}
 	}
@@ -101,36 +101,14 @@ class DGAcquisition {
 	pushToDataLayer(custom_event_name){
 		var event_name = custom_event_name || "acquisition_data";
 		var data_array = {
+			'dgacquisition': {
+				'firsttouch': this.firsttouch,
+				'current': this.current,
+				'db_data': this.db_data,
+			},
 			'event': event_name,
-			'firsttouch_source': this.firsttouch['source'],
-			'firsttouch_medium': this.firsttouch['medium'],
-			'firsttouch_campaign': this.firsttouch['campaign'],
-			'firsttouch_content': this.firsttouch['content'],
-			'firsttouch_term': this.firsttouch['term'],
-			'firsttouch_referrer': this.firsttouch['referrer'],
-			'firsttouch_landing_page': this.firsttouch['landing_page'],
-			'firsttouch_gclid': this.firsttouch['gclid'],
-			'current_source': this.current['source'],
-			'current_medium': this.current['medium'],
-			'current_campaign': this.current['campaign'],
-			'current_content': this.current['content'],
-			'current_term': this.current['term'],
-			'current_referrer': this.current['referrer'],
-			'current_landing_page': this.current['landing_page'],
-			'current_gclid': this.current['gclid']
-		}
-		if (this.db_data) {
-			let db_data_array = {
-				'db_data_source': this.db_data['source'],
-				'db_data_medium': this.db_data['medium'],
-				'db_data_campaign': this.db_data['campaign'],
-				'db_data_content': this.db_data['content'],
-				'db_data_term': this.db_data['term'],
-				'db_data_referrer': this.db_data['referrer'],
-				'db_data_landing_page': this.db_data['landing_page'],
-				'db_data_gclid': this.db_data['gclid']
-			}
-			var data_array = data_array.concat(db_data_array);
-		}
+		};
+		var dataLayer = window.dataLayer = window.dataLayer || [];
 		dataLayer.push(data_array);
 	}
+}
