@@ -10,6 +10,9 @@ class DGAcquisition {
 
 		var gclid = this.getGclid();
 
+		if (typeof sbjs.get.first_add.ep == "undefined") {
+			sbjs.get.first_add.ep = "";
+		}
 		this.firsttouch = {
 			'source': sbjs.get.first.src,
 			'medium': sbjs.get.first.mdm,
@@ -21,6 +24,9 @@ class DGAcquisition {
 			'gclid': gclid.first
 		}
 
+		if (typeof sbjs.get.current_add.ep == "undefined") {
+			sbjs.get.current_add.ep = "";
+		}
 		this.current = {
 			'source': sbjs.get.current.src,
 			'medium': sbjs.get.current.mdm,
